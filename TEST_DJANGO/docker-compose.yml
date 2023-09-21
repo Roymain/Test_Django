@@ -1,0 +1,84 @@
+version: '3.9'
+
+services:
+  front:
+      container_name: react
+      build:
+        context: ./
+        dockerfile: ./docker_utils/Dockerfile_front
+      environment:
+        - PORT=${PORT}
+      volumes:
+        - ./frontend_react:/app
+      ports:
+        - ${PORT}:${PORT}
+      networks:
+          GOT:
+
+  db:
+      container_name: mysql_db
+      image: mysql:5.7
+      restart: always
+      environment:
+        - MYSQL_DATABASE=${MYSQL_DATABASE}
+        - MYSQL_USER=${MYSQL_USER} 
+        - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        - MYSQL_TCP_PORT=${MYSQL_TCP_PORT}
+      ports:
+        - ${MYSQL_TCP_PORT}:${MYSQL_PORT}
+      expose:
+        - ${MYSQL_TCP_PORT}
+      volumes:
+        - ./backend:/db
+      networks:
+          GOT:
+
+  # db_seeder:
+  #     container_name: db_seeder
+  #     depends_on:
+  #       - db
+  #     build:
+  #       context: ./
+  #       dockerfile: ./docker_utils/Dockerfile_seeder
+  #     environment:
+  #       - MYSQL_DATABASE=${MYSQL_DATABASE}
+  #       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+  #       - MYSQL_PORT=${MYSQL_TCP_PORT}
+  #     networks:
+  #         GOT:
+
+  server:
+      container_name: sever_DJANGO
+      depends_on:
+        - db
+      restart: always
+      build:
+        context: ./
+        dockerfile: ./docker_utils/Dockerfile_back
+      environment:
+        - MYSQL_DATABASE=${MYSQL_DATABASE}
+        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        - MYSQL_PORT=${MYSQL_TCP_PORT}
+        - PORT=${PORT_SERVER}
+        - HASH=${HASH}
+      ports:
+        - ${PORT_SERVER}:${PORT_SERVER}
+      expose:
+        - ${PORT_SERVER}
+      volumes:
+        - ./backend:/app
+      networks:
+          GOT:
+
+  adminer:
+      image: adminer
+      restart: always
+      ports:
+        - 8080:8080
+      networks:
+          GOT:
+
+networks:
+  GOT:
+    driver: bridge
