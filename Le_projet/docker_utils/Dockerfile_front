@@ -1,0 +1,14 @@
+FROM node:latest
+
+ENV NODE_ENV development
+
+WORKDIR /app
+
+COPY /frontend_react/package.json	.
+COPY /frontend_react/yarn.lock	.
+
+RUN yarn install
+
+EXPOSE 3000
+
+ENTRYPOINT [ "yarn", "start" ]

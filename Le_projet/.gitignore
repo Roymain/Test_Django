@@ -1,0 +1,15 @@
+*.pyc
+__pycache__/
+*.db
+*.log
+*.pot
+*.pyo
+
+node_modules/
+yarn-error.log
+yarn-debug.log
+package-lock.json
+
+/build/
+
+*.log
