@@ -6,7 +6,7 @@ dev: down
 	${CMD} up --build -d
 
 log:
-	${CMD} logs -f db server front
+	${CMD} logs -f db server
 
 front:
 	${CMD} logs -f front
