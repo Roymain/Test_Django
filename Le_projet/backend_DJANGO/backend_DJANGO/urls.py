@@ -17,8 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from backoffice.views import my_view
+from backoffice.views import login
+from backoffice.views import home
 
 urlpatterns = [
-
+    path('admin/', admin.site.urls),
+    path('', login, name='login'),
+    path('home/', home, name='home'),
     path('myview/', my_view, name='my_view'),
 ]

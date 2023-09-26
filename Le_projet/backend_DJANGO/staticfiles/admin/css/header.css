@@ -1,0 +1,103 @@
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Bree+Serif);
+
+
+
+body {
+
+	font-size:22px;
+	line-height: 32px;
+
+	word-wrap:break-word !important;
+	font-family: 'Open Sans', sans-serif;
+	background-color: white;
+	color: black;
+}
+
+.dark-mode {
+	background-color: black;
+	color: white;
+}
+
+h1 {
+	text-align:center;
+	font-size:60px;
+	font-family: 'Bree Serif', 'serif';
+	}
+
+#container {
+	margin: 0 auto;
+}
+
+p {
+	text-align: center;
+}
+
+nav {
+	height: 100px;
+	background-color: #E64A19;
+}
+
+nav ul {
+	padding: 0;
+  	margin: 0;
+	list-style: none;
+	position: relative;
+	height: 100px;
+	}
+	
+nav ul li {
+	height: 100px;
+	display:inline-block;
+	background-color: #E64A19;
+}
+
+nav a {
+	
+	height: 60px;
+	display:block;
+	padding:20px 20px;	
+	color:#FFF;
+	font-size:30px;
+	line-height: 60px;
+	text-decoration:none;
+	text-align: center;
+}
+
+nav a:hover { 
+	background-color: #000000; 
+}
+
+/* Hide Dropdowns by Default */
+nav ul ul {
+	display: none;
+	position: absolute; 
+	top: 100px; /* the height of the main nav */
+}
+	
+/* Display Dropdowns on Hover */
+nav ul li:hover > ul {
+	display:inherit;
+}
+	
+/* Fisrt Tier Dropdown */
+nav ul ul li {
+	display:inherit;
+	width: 150%;
+	float:none;
+	display:list-item;
+	position: relative;
+}
+
+/* Second, Third and more Tiers	*/
+nav ul ul ul li {
+	position: relative;
+	top:-60px; 
+	left:170px;
+}
+
+	
+/* Change this in order to change the Dropdown symbol */
+li > a:after { content:  ' +'; }
+li > a:only-child:after { content: ''; }

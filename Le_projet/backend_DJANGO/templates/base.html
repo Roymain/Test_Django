@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+  
+    <link rel="stylesheet" href="{% static 'admin/css/header.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Events</a>
+                <!-- First Tier Drop Down -->
+                <ul>
+                    <li><a href="#">Calendrier</a></li>
+                    <li><a href="#">Devis</a></li>
+                    <li><a href="#">Comm</a></li>
+                </ul>        
+                </li>
+                <li><a href="#">Shows</a>
+                <!-- First Tier Drop Down -->
+                <ul>
+                    <li><a href="#">Magazine</a></li>
+                    <li><a href="#">Sur Mesure</a></li>
+                    <li><a href="#">Autorisations</a>
+                    <!-- Second Tier Drop Down -->
+                    <ul>
+                        <li><a href="#">Vols</a></li>
+                        <li><a href="#">Spectacles</a></li>
+                        <li><a href="#">Other</a></li>
+                    </ul>
+                    </li>
+                </ul>
+                </li>
+                <li><a href="#">Suivis Drones</a></li>
+                <li><a href="#">Suivis Autorisations</a></li>
+                <li><a href="#">Clients</a></li>
+            </ul>
+        </nav>
+    </div>
+    <main>
+     
+        <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+        <script>
+            function toggleDarkMode() {
+              var element = document.body;
+              element.classList.toggle("dark-mode");
+            }
+          </script>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
+
+
