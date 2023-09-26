@@ -19,10 +19,11 @@ from django.urls import path
 from backoffice.views import my_view
 from backoffice.views import login
 from backoffice.views import home
-
+from backoffice.views import liste_contrats
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', login, name='login'),
     path('home/', home, name='home'),
+    path('liste_contrats/', liste_contrats, name='liste_contrats'),
     path('myview/', my_view, name='my_view'),
 ]

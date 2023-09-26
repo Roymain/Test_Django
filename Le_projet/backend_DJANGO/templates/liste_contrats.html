@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des contrats en cours</title>
+</head>
+<body>
+    <h1>Liste des contrats en cours</h1>
+    <ul>
+        {% for contrat in contrats %}
+            <li>{{ contrat.nom }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

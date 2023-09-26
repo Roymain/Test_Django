@@ -1,19 +1,19 @@
 version: '3.9'
 
 services:
-  # front:
-  #     container_name: react
-  #     build:
-  #       context: ./
-  #       dockerfile: ./docker_utils/Dockerfile_front
-  #     environment:
-  #       - PORT=${PORT}
-  #     volumes:
-  #       - ./frontend_react:/app
-  #     ports:
-  #       - ${PORT}:${PORT}
-  #     networks:
-  #         GOT:
+  front:
+      container_name: react
+      build:
+        context: ./
+        dockerfile: ./docker_utils/Dockerfile_front
+      environment:
+        - PORT=${PORT}
+      volumes:
+        - ./frontend_react:/app
+      ports:
+        - ${PORT}:${PORT}
+      networks:
+          GOT:
 
   db:
       container_name: mysql_db
