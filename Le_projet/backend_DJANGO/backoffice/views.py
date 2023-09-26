@@ -3,6 +3,10 @@ import time
 # Create your views here.
 from django.http import HttpResponse
 from backoffice.models import Contrat
+from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth.models import User
+from django.contrib import messages
+from django.shortcuts import redirect
 
 
 def my_view(request):
@@ -13,7 +17,21 @@ def home(request):
     return render(request, 'home.html')
 
 def login(request):
-    return HttpResponse("Hello, world!")
+    # User.objects.create_user(username='test', password='password')
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(username=username, password=password)
+
+        if user is not None:
+            auth_login(request, user)
+            return render(request, 'home.html')
+        else:
+            messages.error(request, "bad credential")
+            return redirect('login')
+
+    return render(request, 'login.html')
 
 def liste_contrats(request):
     Contrat.generate_fake_data(20)
