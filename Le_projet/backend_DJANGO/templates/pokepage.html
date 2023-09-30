@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>
+    La PokePage!
+</h1>
+<style>
+
+    li.list {
+        height: 40px;
+        padding-right: 20px;
+    }
+
+    a.red-dot {
+        position:relative;
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background-color: red;
+        border-radius: 50%;
+        left: 50px;
+    }
+
+</style>
+
+<p id="mon_param"></p>
+
+<script src="/staticfiles/pokecall.js"></script>
+
+{% endblock %}
