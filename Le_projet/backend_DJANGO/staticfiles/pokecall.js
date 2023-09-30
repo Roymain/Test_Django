@@ -2,7 +2,7 @@ fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=60')
   .then(response => response.json())
   .then(data => {
     console.log(data.results);
-    // Faites quelque chose avec la liste des Pokémon
+
     const movies = data.results;
         const moviesList = document.getElementById('mon_param');
 

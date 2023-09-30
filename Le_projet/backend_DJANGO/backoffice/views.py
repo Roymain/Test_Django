@@ -40,6 +40,8 @@ def signout(request):
 
 
 
+def test(request):
+    return render(request, 'test.html')
 
 
 def liste_contrats(request):
