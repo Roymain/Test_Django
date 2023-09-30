@@ -1,4 +1,8 @@
 from django.db import migrations, models
+from django.contrib.auth.models import User
+
+def create_user(apps, schema_editor):
+    User.objects.create_user(username='test', password='password')
 
 
 class Migration(migrations.Migration):
@@ -19,3 +23,5 @@ class Migration(migrations.Migration):
             ],
         ),
     ]
+
+    operations.append(migrations.RunPython(create_user))
